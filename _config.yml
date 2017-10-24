@@ -39,6 +39,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-disqus:
-  shortname: byam
