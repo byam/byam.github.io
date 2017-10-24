@@ -26,12 +26,15 @@ $ eval "$(rbenv init -)"
 ```sh
 # install ruby
 $ rbenv install 2.3.0
+
 # check installed version
 $ rbenv versions
 * system (set by /Users/ganbaatarbyambasuren/.rbenv/version)
   2.3.0
+
 # activate ruby 2.3.0 version
 $ rbenv global 2.3.0
+
 # check version
 $ ruby -v
 ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-darwin16]
