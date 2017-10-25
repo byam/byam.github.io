@@ -3,6 +3,7 @@ layout: post
 title:  "Install Ruby on MacOS"
 date:   2017-10-24 22:35:47 +0900
 categories: how-to
+fbcomments: true
 ---
 
 ## Requirements
@@ -40,6 +41,3 @@ ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-darwin16]
 ## Reference
 - https://brew.sh/
 - https://github.com/rbenv/rbenv#homebrew-on-macos
-
-{% include facebook-comment.html %}
-<div class="fb-comments" data-href="https://byam.github.io{{ page.url }}" data-numposts="5"></div>
