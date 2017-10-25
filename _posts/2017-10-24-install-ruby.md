@@ -42,4 +42,4 @@ ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-darwin16]
 - https://github.com/rbenv/rbenv#homebrew-on-macos
 
 {% include facebook-comment.html %}
-<div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-numposts="5"></div>
+<div class="fb-comments" data-href="https://byam.github.io{{ page.url }}" data-numposts="5"></div>
