@@ -6,8 +6,11 @@ categories: dlnd
 fbcomments: true
 ---
 
+Outline:
 - [The simplest neural network](#the-simplest-neural-network)
 - [Sigmoid function](#sigmoid-function)
+- [Simple network implementation](#simple-network-implementation)
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Mqogpnp1lrU" frameborder="0" allowfullscreen></iframe>{: .center-image }
 
