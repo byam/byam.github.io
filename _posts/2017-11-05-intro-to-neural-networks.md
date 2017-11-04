@@ -36,6 +36,10 @@ $$ sigmoid(x) = 1 / (1 + e^{-x}) $$
 
 ## Simple network implementation
 
+The output of the network is 
+
+$$y = f(h) = sigmoid(\sum_{i}w_ix_i + b)$$
+
 ```python
 import numpy as np
 
