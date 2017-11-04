@@ -6,6 +6,9 @@ categories: memo
 fbcomments: true
 ---
 
+- [Perceptrons](#perceptrons)
+- [Sigmoid Neurons](#sigmoid-neurons)
+
 ## Perceptrons
 
 A perceptron takes several binary inputs, $$x_1,x_2,…$$ and produces a single binary output:
