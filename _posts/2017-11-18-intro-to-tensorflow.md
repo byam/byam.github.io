@@ -21,6 +21,7 @@ Outline:
 - [Normalized Inputs and Initial Weights](#normalized-inputs-and-initial-weights)
 - [Measuring Performance](#measuring-performance)
 - [Stochastic Gradient Descent](#stochastic-gradient-descent)
+- [Mini-Batch](#mini-batch)
 
 ## Installing TensorFlow
 
@@ -348,7 +349,151 @@ print(a - 1)
 ![sgd-black-magic]({{ "/assets/img/intro-tensorflow/sgd-black-magic.png" | absolute_url }}){: .center-image }{:width="500px"}
 
 
+## Mini-Batch
+
+- Mini-batching is a **technique** for training on ***subsets*** of the dataset ***instead of all the data*** at one time. 
+- This provides the ability to train a model, even if a **computer lacks the memory** to store the entire dataset.
+- Mini-batching is computationally inefficient, since you can't calculate the loss simultaneously across all samples. 
+- However, this is a small price to pay in order to be able to run the model at all.
+- It's also quite useful **combined with SGD**. 
+- The idea is
+    1. **Randomly shuffle the data** at the start of each epoch
+    2. Then create the **mini-batches**. 
+    3. For each mini-batch, you **train the network** weights with gradient descent. 
+        - Since these batches are random, you're performing SGD with each batch.
+
+Code `batch`:
+```python
+def batches(batch_size, features, labels):
+    """
+    Create batches of features and labels
+    :param batch_size: The batch size
+    :param features: List of features
+    :param labels: List of labels
+    :return: Batches of (Features, Labels)
+    """
+    assert len(features) == len(labels)
+    outout_batches = []
+    
+    sample_size = len(features)
+    for start_i in range(0, sample_size, batch_size):
+        end_i = start_i + batch_size
+        batch = [features[start_i:end_i], labels[start_i:end_i]]
+        outout_batches.append(batch)
+        
+    return outout_batches
+```
+
+### Epochs
+
+- An epoch is a **single forward and backward** pass of the whole dataset. 
+- This is used to **increase the accuracy of the model** without requiring more data. 
+
+### Mini-Batch and Epochs in TensorFlow
+
+```python
+from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow as tf
+import numpy as np
+from helper import batches  # Helper function created in Mini-batching section
 
 
+def print_epoch_stats(epoch_i, sess, last_features, last_labels):
+    """
+    Print cost and validation accuracy of an epoch
+    """
+    current_cost = sess.run(
+        cost,
+        feed_dict={features: last_features, labels: last_labels})
+    valid_accuracy = sess.run(
+        accuracy,
+        feed_dict={features: valid_features, labels: valid_labels})
+    print('Epoch: {:<4} - Cost: {:<8.3} Valid Accuracy: {:<5.3}'.format(
+        epoch_i,
+        current_cost,
+        valid_accuracy))
 
+n_input = 784  # MNIST data input (img shape: 28*28)
+n_classes = 10  # MNIST total classes (0-9 digits)
 
+# Import MNIST data
+mnist = input_data.read_data_sets('/datasets/ud730/mnist', one_hot=True)
+
+# The features are already scaled and the data is shuffled
+train_features = mnist.train.images
+valid_features = mnist.validation.images
+test_features = mnist.test.images
+
+train_labels = mnist.train.labels.astype(np.float32)
+valid_labels = mnist.validation.labels.astype(np.float32)
+test_labels = mnist.test.labels.astype(np.float32)
+
+# Features and Labels
+features = tf.placeholder(tf.float32, [None, n_input])
+labels = tf.placeholder(tf.float32, [None, n_classes])
+
+# Weights & bias
+weights = tf.Variable(tf.random_normal([n_input, n_classes]))
+bias = tf.Variable(tf.random_normal([n_classes]))
+
+# Logits - xW + b
+logits = tf.add(tf.matmul(features, weights), bias)
+
+# Define loss and optimizer
+learning_rate = tf.placeholder(tf.float32)
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=labels))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
+
+# Calculate accuracy
+correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(labels, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+init = tf.global_variables_initializer()
+
+batch_size = 128
+epochs = 100
+learn_rate = 0.001
+
+train_batches = batches(batch_size, train_features, train_labels)
+
+with tf.Session() as sess:
+    sess.run(init)
+
+    # Training cycle
+    for epoch_i in range(epochs):
+
+        # Loop over all batches
+        for batch_features, batch_labels in train_batches:
+            train_feed_dict = {
+                features: batch_features,
+                labels: batch_labels,
+                learning_rate: learn_rate}
+            sess.run(optimizer, feed_dict=train_feed_dict)
+
+        # Print cost and validation accuracy of an epoch
+        print_epoch_stats(epoch_i, sess, batch_features, batch_labels)
+
+    # Calculate accuracy for test dataset
+    test_accuracy = sess.run(
+        accuracy,
+        feed_dict={features: test_features, labels: test_labels})
+
+print('Test Accuracy: {}'.format(test_accuracy))
+```
+
+Output:
+```bash
+Epoch: 90   - Cost: 0.105    Valid Accuracy: 0.869
+Epoch: 91   - Cost: 0.104    Valid Accuracy: 0.869
+Epoch: 92   - Cost: 0.103    Valid Accuracy: 0.869
+Epoch: 93   - Cost: 0.103    Valid Accuracy: 0.869
+Epoch: 94   - Cost: 0.102    Valid Accuracy: 0.869
+Epoch: 95   - Cost: 0.102    Valid Accuracy: 0.869
+Epoch: 96   - Cost: 0.101    Valid Accuracy: 0.869
+Epoch: 97   - Cost: 0.101    Valid Accuracy: 0.869
+Epoch: 98   - Cost: 0.1      Valid Accuracy: 0.869
+Epoch: 99   - Cost: 0.1      Valid Accuracy: 0.869
+Test Accuracy: 0.8696000006198883
+```
+
+- **Lowering the learning rate** would require **more epochs**, but could ultimately achieve better accuracy.
