@@ -8,19 +8,19 @@ fbcomments: true
 
 Outline:
 
-- [References](#references)
+- [Scratch](#scratch)
 - [Distributions](#distributions)
 - [General rule for setting weights](#general-rule-for-setting-weights)
 
-## References
-- [Jupyter Notebook Demo](https://github.com/byam/dlnd/blob/master/3.ConvolutionalNeuralNetworks/weight-initialization/weight_initialization.ipynb)
+## Scratch
+- [Jupyter Notebook](https://github.com/byam/dlnd/blob/master/3.ConvolutionalNeuralNetworks/weight-initialization/weight_initialization.ipynb)
 
 ## Distributions
 
 * Uniform Distribution
     - **equal probability** of picking any number from a set of numbers. 
     -  TensorFlow's `tf.random_uniform` function
-* Normal Distribution¶
+* Normal Distribution
     - Unlike the **uniform distribution**, the **normal distribution** has a higher likelihood of picking number close to it's **mean**. 
     - TensorFlow's `tf.random_normal` function
 * Truncated Normal Distribution
@@ -32,5 +32,3 @@ Outline:
 * The **general rule** for setting the **weights** in a neural network is to be close to **zero** without being too small. 
 * A good pracitce is to start your **weights** in the range of $$[-y, y]$$ where $$y=1/\sqrt{n}$$ 
     - ($$n$$ is the number of inputs to a given neuron).
-
-
