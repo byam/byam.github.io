@@ -82,3 +82,9 @@ Here are a few great resources for you to learn more about recurrent neural netw
 - [Andrej Karpathy's lecture](https://www.youtube.com/watch?v=iX5V1WpxxkY) on RNNs and LSTMs from CS231n
 - [A great blog post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) by Christopher Olah on how LSTMs work.
 - [Building an RNN](http://r2rt.com/recurrent-neural-networks-in-tensorflow-i.html) from the ground up, this is a little more advanced, but has an implementation in TensorFlow.
+- [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+- [LSTM Networks for Sentiment Analysis](http://deeplearning.net/tutorial/lstm.html)
+- [A Beginner's Guide to Recurrent Networks and LSTMs](https://deeplearning4j.org/lstm.html)
+- [TensorFlow's Recurrent Neural Network Tutorial](https://www.tensorflow.org/tutorials/recurrent)
+- [Time Series Prediction with LSTM Recurrent Neural Networks in Python with Keras](http://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/)
+- [Demystifying LSTM neural networks](https://blog.terminal.com/demistifying-long-short-term-memory-lstm-recurrent-neural-networks/)
