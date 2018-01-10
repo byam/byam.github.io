@@ -11,6 +11,7 @@ Outline:
 - [Introduction](#introduction)
 - [Learning Rate](#learning-rate)
 - [Minibatch](#minibatch)
+- [Number of Training Iterations](#number-of-training-iterations)
 
 ## Introduction
 
@@ -105,3 +106,14 @@ Outline:
 ![exp-minibatch-lr.png]({{ "/assets/img/rnn/exp-minibatch-lr.png" | absolute_url }}){: .center-image }{:width="500px"}
 
 ![exp-minibatch-lr-change.png]({{ "/assets/img/rnn/exp-minibatch-lr-change.png" | absolute_url }}){: .center-image }{:width="500px"}
+
+
+## Number of Training Iterations
+
+* To choose the right number of iterations or number of epochs for our training step,
+    - the metric we should have our eyes on is the **validation error**.
+* Early Stopping
+    - determine when to **stop** training a model
+    - roughly works by **monitoring the validation error** and stopping the training when it stops decreasing.
+
+![epochs]({{ "/assets/img/rnn/epochs" | absolute_url }}){: .center-image }{:width="300px"}
