@@ -12,6 +12,9 @@ Outline:
 - [Learning Rate](#learning-rate)
 - [Minibatch](#minibatch)
 - [Number of Training Iterations](#number-of-training-iterations)
+- [Number of Hidden Units Layers](#number-of-hidden-units-layers)
+- [RNN Hyperparameters](#rnn-hyperparameters)
+- [Sources and References](#sources-and-references)
 
 ## Introduction
 
@@ -116,4 +119,64 @@ Outline:
     - determine when to **stop** training a model
     - roughly works by **monitoring the validation error** and stopping the training when it stops decreasing.
 
-![epochs]({{ "/assets/img/rnn/epochs" | absolute_url }}){: .center-image }{:width="300px"}
+![epochs.png]({{ "/assets/img/rnn/epochs.png" | absolute_url }}){: .center-image }{:width="300px"}
+
+## Number of Hidden Units Layers
+
+![hidden-simple-complex.png]({{ "/assets/img/rnn/hidden-simple-complex.png" | absolute_url }}){: .center-image }{:width="500px"}
+
+* The number and architecture of the **hidden units** is the main measure for a model's learning **capacity**.
+    - Provide the model with **too much capacity**
+        - it might tend to **overfit** and just try to **memorize** the training set.
+        - meaning that the **training accuracy** is much better than the **validation accuracy**
+        ![hidden-accuracy.png]({{ "/assets/img/rnn/hidden-accuracy.png" | absolute_url }}){: .center-image }{:width="500px"}
+    - Might want to try to **decrease the number of hidden units**
+    - Utilize regularization techniques like dropouts or L2 regularization
+    ![hidden-utilize.png]({{ "/assets/img/rnn/hidden-utilize.png" | absolute_url }}){: .center-image }{:width="500px"}
+
+ 
+#### The number of hidden units
+1. **The more** hidden units is the better
+    - a **little larger** than the ideal number is **not a problem**
+    -  **much larger** value can often lead to the model **overfitting** 
+2. **If model is not training**
+    - **add more hidden units** and **track validation error**
+    - **keep adding hidden units** until the **validation starts getting worse**.
+3. Another **heuristic** involving the **first hidden layer**
+    - **larger than** the number of the **inputs** has been observed to be beneficial in a number of tests
+
+#### The number of layers
+1. It's often the case that a **three-layer** neural net will **outperform** a **two-layer** net
+    - but going even **deeper** is **rarely helps** much more.
+2. The **exception**
+    - **Convolutional** neural networks where the deeper they are, the better they perform.
+
+## RNN Hyperparameters
+
+* Two main choices we need to make when we want to build RNN
+    1. choosing cell type
+        - long short-term memory cell
+        - vanilla RNN cell
+        - gated recurrent unit cell
+    2. how deep the model is
+    ![rnn-hype-layers.png]({{ "/assets/img/rnn/rnn-hype-layers.png" | absolute_url }}){: .center-image }{:width="500px"}
+
+* In practice, LSTMs and GRUs perform better than vanilla RNNs
+    - While **LSTM**s seem to be more **commonly** used
+    ![rnn-hype-cell.png]({{ "/assets/img/rnn/rnn-hype-cell.png" | absolute_url }}){: .center-image }{:width="500px"}
+    - It really depends on the **task** and the **dataset**.
+
+## Sources and References
+
+If you want to learn more about hyperparameters, these are some great resources on the topic:
+
+- [Practical recommendations for gradient-based training of deep architectures](https://arxiv.org/abs/1206.5533) by Yoshua Bengio
+- [Deep Learning book - chapter 11.4: Selecting Hyperparameters](http://www.deeplearningbook.org/contents/guidelines.html) by Ian Goodfellow, Yoshua Bengio, Aaron Courville
+- [Neural Networks and Deep Learning book - Chapter 3: How to choose a neural network's hyper-parameters?](http://neuralnetworksanddeeplearning.com/chap3.html#how_to_choose_a_neural_network's_hyper-parameters) by Michael Nielsen
+- [Efficient BackProp (pdf)](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) by Yann LeCun
+
+More specialized sources:
+
+- [How to Generate a Good Word Embedding?](https://arxiv.org/abs/1507.05523) by Siwei Lai, Kang Liu, Liheng Xu, Jun Zhao
+- [Systematic evaluation of CNN advances on the ImageNet](https://arxiv.org/abs/1606.02228) by Dmytro Mishkin, Nikolay Sergievskiy, Jiri Matas
+- [Visualizing and Understanding Recurrent Networks](https://arxiv.org/abs/1506.02078) by Andrej Karpathy, Justin Johnson, Li Fei-Fei
