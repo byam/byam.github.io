@@ -12,6 +12,7 @@ Outline:
 - [Other Generative Models](#other-generative-models)
 - [Games and Equilibrium](#games-and-equilibrium)
 - [GAN trained on the MNIST](#gan-trained-on-the-mnist)
+- [More Learning Resources](#more-learning-resources)
 
 ## What you can do with GANs
 
@@ -95,3 +96,14 @@ Most of the applications of GANs so far have been for **images**.
 ## GAN trained on the MNIST
 
 * [Generative Adversarial Network](https://github.com/byam/dlnd/blob/master/5.GenerativeAdversarialNetworks/gan_mnist/Intro_to_GANs_Solution.ipynb)
+
+## More Learning Resources:
+   
+- [introduction-generative-adversarial-networks-code-tensorflow](http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow/)
+- [generative-models](https://blog.openai.com/generative-models/)
+- [karpathy/gan/](http://cs.stanford.edu/people/karpathy/gan/)
+- [Generative-Adversarial-Networks](https://channel9.msdn.com/Events/Neural-Information-Processing-Systems-Conference/Neural-Information-Processing-Systems-Conference-NIPS-2016/Generative-Adversarial-Networks)
+- [gan-tensorflow](http://wiseodd.github.io/techblog/2016/09/17/gan-tensorflow/)
+- [a-very-gentle-introduction-to-generative-adversarial-networks](https://www.slideshare.net/ThomasDaSilvaPaula/a-very-gentle-introduction-to-generative-adversarial-networks-aka-gans-71614428)
+- [generative-adversarial-nets-in](http://blog.evjang.com/2016/06/generative-adversarial-nets-in.html)
+- [generative-adversarial-networks-explained-with-a-classic-spongebob-squarepants-episode](https://medium.com/@awjuliani/generative-adversarial-networks-explained-with-a-classic-spongebob-squarepants-episode-54deab2fce39)
