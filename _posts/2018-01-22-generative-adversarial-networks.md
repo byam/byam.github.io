@@ -35,7 +35,7 @@ Most of the applications of GANs so far have been for **images**.
         - especially good at unsupervised image to image translation.
         - Here, it transforms this video of a horse to a video of a zebra.
         ![cycle-gan.png]({{ "/assets/img/gan/cycle-gan.png" | absolute_url }}){: .center-image }{:width="400px"}
-*　GANs aren't limited to the visual domain.　
+* GANs aren't limited to the visual domain.　
     - the outcome of high energy particle **physics experiments**.
     - Instead of using explicit Monte-Carlo simulation of the real physics of every step, the GAN learns by example what outcome is likely to occur in each situation.
 
