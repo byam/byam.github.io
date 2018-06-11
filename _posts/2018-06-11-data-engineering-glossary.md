@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Data Engineering Glossary"
-date:   2018-06-11 00:00:00 +0900
+date:   2018-06-11 17:00:00 +0900
 categories: glossary, data
 fbcomments: true
 ---
