@@ -16,14 +16,6 @@ Glossary:
 - [ACID](#acid)
 
 
-## 
-
-![]({{ "/assets/img/de-glossary/" | absolute_url }}){: .center-image }{:width="600px"}
-
-### References
-- []()
-
-
 
 
 ## Serialize and Deserialize
