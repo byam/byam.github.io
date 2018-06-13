@@ -85,14 +85,10 @@ Serializeの逆で、変換されたデータをデータに復元するプロ�
 
 **データベーストランザクション**とは、トランザクションアクションに対して、全てのタスクを処理されるか、まったく処理されないかのどちらかです。
 
-![database-transaction.png]({{ "/assets/img/de-glossary/database-transaction.png" | absolute_url }}){: .center-image }{:width="600px"}
-
 
 ## ACID
 
 **ACID**(Atomicity, Consistency, Isolation, Durability)とは、**データベーストランザクション**を実現させるための特性である。
-
-![acid.png]({{ "/assets/img/de-glossary/acid.png" | absolute_url }}){: .center-image }{:width="600px"}
 
 ### Atomicity(原子性)
 トランザクションが中断されると、連携されているデータに何も変更が起きないということ。
@@ -115,6 +111,25 @@ Atomicityではトランザクションが中断されると結果はデータ�
 
 
 
+## CAP
+
+## BASE
+
+## RDBMS
+
+## NoSQL
+
+## Data Warehouse
+
+## Managed, Enterprise, On-Premise 
+
+## Data Driven
+
+## Job Scheduling
+
+## Thread Safe
+
+## Indexing
 
 
 
